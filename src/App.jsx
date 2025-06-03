@@ -3,6 +3,12 @@ import { useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
+  const [randomNumber, setRandomNumber] = useState(null);
+
+  const generateRandomNumber = () => {
+    const number = Math.floor(Math.random() * 100) + 1; 
+    setRandomNumber(number);
+  }
 
   return (
     <>
@@ -16,8 +22,8 @@ function App() {
         />
       </div>
       <div className="card">
-        <button>s Gerar Número Aleatório</button>
-        <p>MOSRAR AQUI O NÚMERO ALEATÓRIO</p>
+        <button onClick={generateRandomNumber}>{randomNumber === null ? "Gerar Número Aleatório" : "Gerar outro Número..."}</button>
+        <p>{randomNumber}</p>
       </div>
     </>
   );
